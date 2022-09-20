@@ -1,3 +1,3 @@
 # React Quiz App
 
--- quiz app in react
+-- simple quiz app in react
