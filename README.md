@@ -1,5 +1,5 @@
 # React Quiz App
 
--- quiz app in react
+-- Simple quiz app in react
 
 DEMO - https://simple-react-quiz.netlify.app/
