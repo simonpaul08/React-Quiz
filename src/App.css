@@ -52,14 +52,56 @@
   padding: 8px;
   margin-bottom: 18px;
   background-color: #2B4865;
+  border: none;
   color: #c8c8c8;
   cursor: pointer;
+  box-shadow: 4px 4px 8px 4px rgba(0,0,0,.15);
+  transition: bxo-shadow 0.3s ease;
 }
 
 .answer:hover {
   background-color: #256D85;
 }
+.answer:active {
+  box-shadow: none;
+}
+
+.result__container {
+  text-align: center;
+}
 
 .result {
-  color: green;
+  color: #c8c8c8;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.restart {
+  display: inline-block;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 8px 22px;
+  border: none;
+  background-color: #256D85;
+  color: #f1f1f1;
+  letter-spacing: 1.1px;
+  cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 990px) {
+  .answer:hover {
+    background-color: #2B4865;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .question {
+    font-size: 16px;
+  }
+  .question__count {
+    font-size: 20px;
+    color: #f1f1f1;
+    margin-bottom: 10px;
+  }
 }
