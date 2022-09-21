@@ -8,24 +8,54 @@ const Container = ({ handleScore, handleLimit }) => {
 
     const data = [
         {
-            question: "How long does it take to master React?",
+            question: "What is the hottest planet in the solar system ?",
             options: [
-                {id: 1, option: "1 week"},
-                {id: 2, option: "1 month"},
-                {id: 3, option: "6 month"},
-                {id: 4, option: "1 year"}
+                {id: 1, option: "Mars"},
+                {id: 1, option: "Venus"},
+                {id: 1, option: "Jupiter"},
+                {id: 1, option: "Mercury"}
             ],
-            answer: "1 year"
+            answer: "Venus"
         },
         {
-            question: "Which language is mainly used in Web Apps ?",
+            question: "Which country consumes the most chocolate per capita ?",
             options: [
-                {id: 1, option: "Java"},
-                {id: 2, option: "CPP"},
-                {id: 3, option: "JavaScript"},
-                {id: 4, option: "Kotlin"}
+                {id: 1, option: "Switzerland"},
+                {id: 2, option: "Germany"},
+                {id: 3, option: "France"},
+                {id: 4, option: "Russia"}
             ],
-            answer: "JavaScript"
+            answer: "Switzerland"
+        },
+        {
+            question: "What is the only edible food that never goes bad ?",
+            options: [
+                {id: 1, option: "Almonds"},
+                {id: 2, option: "Honey"},
+                {id: 3, option: "Peanut Butter"},
+                {id: 4, option: "Seeds"}
+            ],
+            answer: "Honey"
+        },
+        {
+            question: "What is the name of the largest ocean on earth ?",
+            options: [
+                {id: 1, option: "Pacific Ocean"},
+                {id: 2, option: "Artic Ocean"},
+                {id: 3, option: "Indian Ocean"},
+                {id: 4, option: "Southern Ocean"}
+            ],
+            answer: "Pacific Ocean"
+        },
+        {
+            question: "Which country borders 14 nations and crosses 8 time zones ?",
+            options: [
+                {id: 1, option: "Canada"},
+                {id: 2, option: "Italy"},
+                {id: 3, option: "Russia"},
+                {id: 4, option: "India"}
+            ],
+            answer: "Russia"
         },
     ]
 
@@ -38,6 +68,7 @@ const Container = ({ handleScore, handleLimit }) => {
     const navigate = useNavigate()
     const [count, setCount] = useState(0)
     const [selected, setSelected] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const currentQuestion= data[count]
     const answer = currentQuestion.answer
@@ -49,7 +80,11 @@ const Container = ({ handleScore, handleLimit }) => {
             handleScore()
         }
         setSelected(true)
-        setTimeout(handleNext, 1000)
+        setLoading(true)
+        setTimeout(() => {
+            handleNext()
+            setLoading(false)
+        }, 1000)
     }
 
 
@@ -70,6 +105,23 @@ const Container = ({ handleScore, handleLimit }) => {
  
   return (
     <div className='container'>
+        {loading && <div className="skeleton-container">
+            <div className="question__container">
+                <div className="skeleton skeleton-text" style={{width: '40%', height: '30px', marginBottom: '10px'}}></div>
+
+                <div className="skeleton skeleton-text" style={{height: '8px', marginBottom: '8px'}}></div>
+                <div className="skeleton skeleton-text" style={{height: '25px'}}></div>
+            </div>
+
+            <div className="answer__container">
+                <div className="skeleton skeleton-answer"></div>
+                <div className="skeleton skeleton-answer"></div>
+                <div className="skeleton skeleton-answer"></div>
+                <div className="skeleton skeleton-answer"></div>
+            </div>
+        </div>}
+        {!loading && 
+        <div>
         <div className="question__container">
             <h1 className='question__count'>Question - {count + 1}</h1>
             <hr className='hr-line'/>
@@ -80,7 +132,7 @@ const Container = ({ handleScore, handleLimit }) => {
             {currentQuestion.options.map((opt) => {
                 return <Option key={opt.id} opt={opt} selected={selected} handleSubmit={handleSubmit} />
             })}
-        </div>
+        </div> </div>}
     </div>
   )
 }

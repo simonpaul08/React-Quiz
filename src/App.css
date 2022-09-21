@@ -87,6 +87,32 @@
   cursor: pointer;
 }
 
+/* skeleton animation */
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+  opacity: .7;
+}
+
+.skeleton-text {
+  width: 100%;
+  border-radius: 4px;
+}
+.skeleton-answer {
+  width: 45%;
+  height: 35px;
+  border-radius: 4px;
+  margin-bottom: 18px;
+}
+@keyframes skeleton-loading {
+  0% {
+    background-color: rgba(37, 109, 133, 0.4);
+  }
+  100% {
+    background-color: rgba(37, 109, 133, 0.9);
+  }
+}
+
 
 
 @media screen and (max-width: 990px) {
